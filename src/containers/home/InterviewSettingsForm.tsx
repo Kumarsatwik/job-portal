@@ -11,7 +11,6 @@ import {
   interviewModeOptions,
 } from "./constants";
 
-
 const InterviewDetailsForm: React.FC<{
   handleTab: (n: PageNumbers) => void;
 }> = ({ handleTab }) => {
@@ -28,17 +27,20 @@ const InterviewDetailsForm: React.FC<{
       interviewDuration: "",
       interviewLanguage: "",
     },
-    validationSchema:Yup.object().shape({
-      interviewModeOptions: Yup.string().required("Interview Mode is required"),
-      interviewDurationOptions: Yup.string().required("Interview Duration is required"),
-      interviewLanguageOptions: Yup.string().required("Interview Language is required"),
+    validationSchema: Yup.object().shape({
+      interviewMode: Yup.string().required("Interview Mode is required"),
+      interviewDuration: Yup.string().required(
+        "Interview Duration is required"
+      ),
+      interviewLanguage: Yup.string().required(
+        "Interview Language is required"
+      ),
     }),
     onSubmit: (values) => {
       console.log({ values });
       alert("Form successfully submitted");
     },
   });
-  
 
   return (
     <Box width="100%" as="form" onSubmit={handleSubmit as any}>
